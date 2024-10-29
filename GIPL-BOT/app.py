@@ -37,8 +37,8 @@ def load_knowledge_base(pdf_paths, website_urls):
     knowledge_base = ""
     
     # Extract text from PDFs
-    for pdf_path in pdf_paths:
-        knowledge_base += extract_text_from_pdf(pdf_path) + " "
+    # for pdf_path in pdf_paths:
+    #     knowledge_base += extract_text_from_pdf(pdf_path) + " "
     
     # Fetch content from websites
     for url in website_urls:
@@ -75,7 +75,7 @@ website_urls = [
     ''# Replace with your actual website URLs
 ]
 
-knowledge_base = load_knowledge_base(pdf_paths, website_urls)
+knowledge_base = load_knowledge_base(website_urls) #pdf_paths,
 
 if user_prompt:
     # Display user message in a styled format
