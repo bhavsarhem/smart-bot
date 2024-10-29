@@ -62,14 +62,17 @@ st.caption("Ask me anything about our website! ©(https://gipl.in)")
 user_prompt = st.chat_input("Type your message here...")
 
 # Specify your PDF document paths and website URLs here
-pdf_paths = [
-    'src\BoardofDirectors_20240925.pdf',
-    'src\CSRPolicytoBoardofDirectors.pdf',
-    'src\ShriMaheshGohel.pdf'  # Replace with your actual PDF paths
-]
+# pdf_paths = [
+#     'src\BoardofDirectors_20240925.pdf',
+#     'src\CSRPolicytoBoardofDirectors.pdf',
+#     'src\ShriMaheshGohel.pdf'  # Replace with your actual PDF paths
+# ]
 website_urls = [
     'https://gipl.in',
-    'https://gipl.in/Detail/AwardList'  # Replace with your actual website URLs
+    'https://gipl.in/Detail/AwardList',
+    'https://gipl.in/Detail/Content/3387',
+    'https://gipl.in/Content/Assets/BoardofDirectors_20240925.pdf',
+    ''# Replace with your actual website URLs
 ]
 
 knowledge_base = load_knowledge_base(pdf_paths, website_urls)
