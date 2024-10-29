@@ -13,13 +13,13 @@ os.environ["GROQ_API_KEY"] = GROQ_API_KEY
 client = Groq(api_key=GROQ_API_KEY)
 
 # Function to extract text from a PDF file
-def extract_text_from_pdf(pdf_path):
-    text = ""
-    with open(pdf_path, "rb") as file:
-        reader = PyPDF2.PdfReader(file)
-        for page in reader.pages:
-            text += page.extract_text() + " "
-    return text.strip()
+# def extract_text_from_pdf(pdf_path):
+#     text = ""
+#     with open(pdf_path, "rb") as file:
+#         reader = PyPDF2.PdfReader(file)
+#         for page in reader.pages:
+#             text += page.extract_text() + " "
+#     return text.strip()
 
 # Function to fetch content from a website URL
 def fetch_website_content(url):
@@ -33,7 +33,7 @@ def fetch_website_content(url):
         return f"Error fetching content: {str(e)}"
 
 # Load knowledge base from multiple PDFs and websites
-def load_knowledge_base(pdf_paths, website_urls):
+def load_knowledge_base(website_urls): #pdf_paths,
     knowledge_base = ""
     
     # Extract text from PDFs
