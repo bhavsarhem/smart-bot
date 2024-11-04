@@ -16,13 +16,13 @@ GROQ_API_KEY = os.environ["GROQ_API_KEY"]
 client = Groq(api_key=GROQ_API_KEY)
 
 # Function to extract text from a PDF file
-# def extract_text_from_pdf(pdf_path):
-#     text = ""
-#     with open(pdf_path, "rb") as file:
-#         reader = PyPDF2.PdfReader(file)
-#         for page in reader.pages:
-#             text += page.extract_text() + " "
-#     return text.strip()
+def extract_text_from_pdf(pdf_path):
+    text = ""
+    with open(pdf_path, "rb") as file:
+        reader = PyPDF2.PdfReader(file)
+        for page in reader.pages:
+            text += page.extract_text() + " "
+    return text.strip()
 
 # Function to fetch content from a website URL
 def fetch_website_content(url):
@@ -36,12 +36,12 @@ def fetch_website_content(url):
         return f"Error fetching content: {str(e)}"
 
 # Load knowledge base from multiple PDFs and websites
-def load_knowledge_base(website_urls): #pdf_paths,
+def load_knowledge_base(pdf_paths, website_urls): #
     knowledge_base = ""
     
     # Extract text from PDFs
-    # for pdf_path in pdf_paths:
-    #     knowledge_base += extract_text_from_pdf(pdf_path) + " "
+    for pdf_path in pdf_paths:
+        knowledge_base += extract_text_from_pdf(pdf_path) + " "
     
     # Fetch content from websites
     for url in website_urls:
@@ -73,18 +73,18 @@ st.caption("Ask me anything about our website! ©(https://gipl.in)")
 user_prompt = st.chat_input("Type your message here...")
 
 # Specify your PDF document paths and website URLs here
-# pdf_paths = [
-#     'src/BoardofDirectors_20240925.pdf',
-#     'src/CSRPolicytoBoardofDirectors.pdf',
-#     'src/ShriMaheshGohel.pdf'  # Replace with your actual PDF paths
-# ]
+pdf_paths = [
+    './BoardofDirectors_20240925.pdf',
+    './CSRPolicytoBoardofDirectors.pdf',
+    './ShriMaheshGohel.pdf'  # Replace with your actual PDF paths
+]
 website_urls = [
     'https://gipl.in',
     'https://gipl.in/Detail/AwardList',
     'https://gipl.in/Detail/Content/3387' # Replace with your actual website URLs
 ]
 
-knowledge_base = load_knowledge_base(website_urls) #pdf_paths,
+knowledge_base = load_knowledge_base(pdf_paths, website_urls) #
 
 if user_prompt:
     # Display user message in a styled format
