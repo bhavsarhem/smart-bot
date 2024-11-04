@@ -63,9 +63,9 @@ user_prompt = st.chat_input("Type your message here...")
 
 # Specify your PDF document paths and website URLs here
 pdf_paths = [
-    'src/BoardofDirectors_20240925.pdf',
-    'src/CSRPolicytoBoardofDirectors.pdf',
-    'src/ShriMaheshGohel.pdf'  # Replace with your actual PDF paths
+    'GIPL-BOT/src/BoardofDirectors_20240925.pdf',
+    'GIPL-BOT/src/CSRPolicytoBoardofDirectors.pdf',
+    'GIPL-BOT/src/ShriMaheshGohel.pdf'  # Replace with your actual PDF paths
 ]
 website_urls = [
     'https://gipl.in',
