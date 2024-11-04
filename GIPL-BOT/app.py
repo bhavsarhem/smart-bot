@@ -12,14 +12,14 @@ os.environ["GROQ_API_KEY"] = GROQ_API_KEY
 # Initialize the Groq client
 client = Groq(api_key=GROQ_API_KEY)
 
-# Function to extract text from a PDF file
-def extract_text_from_pdf(pdf_path):
-    text = ""
-    with open(pdf_path, "rb") as file:
-        reader = PyPDF2.PdfReader(file)
-        for page in reader.pages:
-            text += page.extract_text() + " "
-    return text.strip()
+# # Function to extract text from a PDF file
+# def extract_text_from_pdf(pdf_path):
+#     text = ""
+#     with open(pdf_path, "rb") as file:
+#         reader = PyPDF2.PdfReader(file)
+#         for page in reader.pages:
+#             text += page.extract_text() + " "
+#     return text.strip()
 
 # Function to fetch content from a website URL
 def fetch_website_content(url):
@@ -33,12 +33,12 @@ def fetch_website_content(url):
         return f"Error fetching content: {str(e)}"
 
 # Load knowledge base from multiple PDFs and websites
-def load_knowledge_base(pdf_paths, website_urls):
+def load_knowledge_base(website_urls): #pdf_paths,
     knowledge_base = ""
     
-    # Extract text from PDFs
-    for pdf_path in pdf_paths:
-        knowledge_base += extract_text_from_pdf(pdf_path) + " "
+    # # Extract text from PDFs
+    # for pdf_path in pdf_paths:
+    #     knowledge_base += extract_text_from_pdf(pdf_path) + " "
     
     # Fetch content from websites
     for url in website_urls:
@@ -62,11 +62,11 @@ st.caption("Ask me anything about our website! ©(https://gipl.in)")
 user_prompt = st.chat_input("Type your message here...")
 
 # Specify your PDF document paths and website URLs here
-pdf_paths = [
-    'GIPL-BOT/src/BoardofDirectors_20240925.pdf',
-    'GIPL-BOT/src/CSRPolicytoBoardofDirectors.pdf',
-    'GIPL-BOT/src/ShriMaheshGohel.pdf'  # Replace with your actual PDF paths
-]
+# pdf_paths = [
+#     'GIPL-BOT/src/BoardofDirectors_20240925.pdf',
+#     'GIPL-BOT/src/CSRPolicytoBoardofDirectors.pdf',
+#     'GIPL-BOT/src/ShriMaheshGohel.pdf'  # Replace with your actual PDF paths
+# ]
 website_urls = [
     'https://gipl.in',
     'https://gipl.in/Detail/AwardList',
@@ -75,7 +75,7 @@ website_urls = [
     # Replace with your actual website URLs
 ]
 
-knowledge_base = load_knowledge_base(pdf_paths, website_urls) #
+knowledge_base = load_knowledge_base(website_urls) #pdf_paths,
 
 if user_prompt:
     # Display user message in a styled format
