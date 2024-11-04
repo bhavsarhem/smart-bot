@@ -80,7 +80,8 @@ user_prompt = st.chat_input("Type your message here...")
 # ]
 website_urls = [
     'https://gipl.in',
-    'https://gipl.in/Detail/AwardList'  # Replace with your actual website URLs
+    'https://gipl.in/Detail/AwardList',
+    'https://gipl.in/Detail/Content/3387' # Replace with your actual website URLs
 ]
 
 knowledge_base = load_knowledge_base(website_urls) #pdf_paths,
