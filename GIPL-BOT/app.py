@@ -96,6 +96,11 @@ if user_prompt:
     if user_prompt.lower() in simple_greetings:
         assistant_response = f"Hello! I am {chatbot_name}. How can I assist you today?"
     else:
+        # Check if the question is related to the company's CEO
+        if 'ceo' in user_prompt.lower() or 'mahesh gohel' in user_prompt.lower():
+            ceo_pdf_path = 'ShriMaheshGohel.pdf'
+            knowledge_base = extract_text_from_pdf(ceo_pdf_path)
+            
         # Compress the knowledge base before sending it to the API
         compressed_knowledge_base = compress_data(knowledge_base)
 
