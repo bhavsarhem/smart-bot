@@ -76,7 +76,8 @@ user_prompt = st.chat_input("Type your message here...")
 pdf_paths = [
     'BoardofDirectors_20240925.pdf',
     'CSRPolicytoBoardofDirectors.pdf',
-    'ShriMaheshGohel.pdf'  # Replace with your actual PDF paths
+    'ShriMaheshGohel.pdf',
+    'IAS_Civil_List-2024_241105_163240.pdf'# Replace with your actual PDF paths
 ]
 website_urls = [
     'https://gipl.in',
@@ -97,7 +98,7 @@ if user_prompt:
         assistant_response = f"Hello! I am {chatbot_name}. How can I assist you today?"
     else:
         # Check if the question is related to the company's CEO
-        if 'ceo' in user_prompt.lower() or 'mahesh gohel' in user_prompt.lower():
+        if 'ceo' in user_prompt.lower() or 'mahesh gohel' in user_prompt.lower() or 'chief executive officer':
             ceo_pdf_path = 'ShriMaheshGohel.pdf'
             knowledge_base = extract_text_from_pdf(ceo_pdf_path)
             
@@ -126,13 +127,13 @@ if user_prompt:
 for chat in st.session_state.chat_history:
     if chat['role'] == 'user':
         st.markdown(
-            f"<div style='text-align: right; background-color: #FF6666; border-radius: 10px; padding: 10px; margin: 5px; display: inline-block;'>"
-            f"<b>User:</b> {chat['content']}</div>",
+            f"<div style='background-color: rgb(217 237 255);color: rgb(0, 104, 201);border-radius: 1rem;padding: 1rem;margin: 1rem;display: inline-block;min-width: 15%; width: 65%; '>"
+            f"<b>User:</b> <br> <div style='opacity:0.9;'>{chat['content']} </div></div>",
             unsafe_allow_html=True)
     else:
         st.markdown(
-            f"<div style='text-align: left; background-color: #FFA500; border-radius: 10px; padding: 10px; margin: 5px; display: inline-block;'>"
-            f"<b>{chatbot_name}:</b> {chat['content']}</div>",
+            f"<div style='background-color: rgb(255 236 202);color: rgb(105, 68, 0);border-radius: 1rem;padding: 1rem;margin: 2rem 1rem 1rem 1rem;display: inline-block;float: right;min-width: 15%;width: 65%;text-align: right;'>"
+            f"<b>{chatbot_name}:</b> <br> <div style='text-align: left;opacity:0.9;'>{chat['content']} </div> </div>",
             unsafe_allow_html=True)
 
 # Add some CSS to style the chat interface (optional)
