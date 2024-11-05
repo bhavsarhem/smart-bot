@@ -98,7 +98,7 @@ if user_prompt:
         assistant_response = f"Hello! I am {chatbot_name}. How can I assist you today?"
     else:
         # Check if the question is related to the company's CEO
-        if 'ceo' in user_prompt.lower() or 'mahesh gohel' in user_prompt.lower() or 'chief executive officer':
+        if 'ceo' in user_prompt.lower() or 'mahesh gohel' in user_prompt.lower():
             ceo_pdf_path = 'ShriMaheshGohel.pdf'
             knowledge_base = extract_text_from_pdf(ceo_pdf_path)
             
