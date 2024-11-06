@@ -114,7 +114,7 @@ if user_prompt:
         
         # Generate a response using the Groq API
         chat_completion = client.chat.completions.create(
-            model="llama3-8b-8192",
+            model="llava-v1.5-7b-4096-preview",
             messages=messages,
         )
         
