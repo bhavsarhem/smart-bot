@@ -66,6 +66,7 @@ chatbot_name = "GIPL Assistant"
 
 # Streamlit UI setup
 st.set_page_config(page_title=f"{chatbot_name}", page_icon="img/gipl_header_logo.png")
+st.logo("img/gipl_header_logo.png")
 st.title(f"Welcome to {chatbot_name}!")
 st.caption("Ask me anything about our website! ©(https://gipl.in)")
 
@@ -77,8 +78,9 @@ pdf_paths = [
     'BoardofDirectors_20240925.pdf',
     'CSRPolicytoBoardofDirectors.pdf',
     'ShriMaheshGohel.pdf',
-    'IAS_Civil_List-2024_241105_163240.pdf'# Replace with your actual PDF paths
+    # 'IAS_Civil_List-2024_241105_163240.pdf'
 ]
+print(pdf_paths)
 website_urls = [
     'https://gipl.in',
     'https://gipl.in/Detail/AwardList',
@@ -96,12 +98,14 @@ if user_prompt:
     simple_greetings = ["hi", "hi!", "hello", "hello!", "hey", "hi there!", "greetings"]
     if user_prompt.lower() in simple_greetings:
         assistant_response = f"Hello! I am {chatbot_name}. How can I assist you today?"
-    # Check if the question is related to the company's CEO
-    if 'ceo' in user_prompt.lower() or 'mahesh gohel' in user_prompt.lower() or 'chief executive officer' in user_prompt.lower():
-        ceo_pdf_path = 'ShriMaheshGohel.pdf'
-        knowledge_base = extract_text_from_pdf(ceo_pdf_path)
-        
+
     else:
+            
+        # Check if the question is related to the company's CEO
+        if 'ceo' in user_prompt.lower() or 'mahesh gohel' in user_prompt.lower():
+            ceo_pdf_path = 'ShriMaheshGohel.pdf'
+            knowledge_base = extract_text_from_pdf(ceo_pdf_path)
+
         # Compress the knowledge base before sending it to the API
         compressed_knowledge_base = compress_data(knowledge_base)
 
@@ -126,15 +130,15 @@ if user_prompt:
 # Display chat history in a chatbot-like format with improved styling
 for chat in st.session_state.chat_history:
     if chat['role'] == 'user':
-        st.markdown(
-            f"<div style='background-color: rgb(217 237 255);color: rgb(0, 104, 201);border-radius: 1rem;padding: 1rem;margin: 1rem;display: inline-block;min-width: 15%; width: 65%; '>"
-            f"<b>User:</b> <br> <div style='opacity:0.9;'>{chat['content']} </div></div>",
-            unsafe_allow_html=True)
+             st.markdown(
+                f"<div style='background-color: rgb(217 237 255);color: rgb(0, 104, 201);border-radius: 1rem;padding: 1rem;margin: 1rem;display: inline-block;min-width: 15%; width: 65%; '>"
+                f"<b>User:</b> <br> <div style='opacity:0.9;'>{chat['content']} </div></div>",
+                unsafe_allow_html=True)
     else:
         st.markdown(
-            f"<div style='background-color: rgb(255 236 202);color: rgb(105, 68, 0);border-radius: 1rem;padding: 1rem;margin: 2rem 1rem 1rem 1rem;display: inline-block;float: right;min-width: 15%;width: 65%;text-align: right;'>"
-            f"<b>{chatbot_name}:</b> <br> <div style='text-align: left;opacity:0.9;'>{chat['content']} </div> </div>",
-            unsafe_allow_html=True)
+                f"<div style='background-color: rgb(255 236 202);color: rgb(105, 68, 0);border-radius: 1rem;padding: 1rem;margin: 2rem 1rem 1rem 1rem;display: inline-block;float: right;min-width: 15%;width: 65%;text-align: right;'>"
+                f"<b>{chatbot_name}:</b> <br> <div style='text-align: left;opacity:0.9;'>{chat['content']} </div> </div>",
+                unsafe_allow_html=True)
 
 # Add some CSS to style the chat interface (optional)
 st.markdown("""
